@@ -13,3 +13,18 @@
 ### Start Minikube
 ```bash
 minikube start --driver=docker
+
+# Kubernetes Day 2 – Deployments
+
+## What I learned
+- Deployments manage a set of identical Pods (replicas).
+- Writing a Deployment manifest (`kind: Deployment`, `replicas`, `selector`, `template`).
+- How to deploy, inspect (`get`, `describe`, `logs`), and scale.
+- Rolling updates and rollbacks with zero downtime.
+- The relationship: Deployment → ReplicaSet → Pods.
+
+## Commands
+
+### Deploy
+```bash
+kubectl apply -f deployment.yaml
