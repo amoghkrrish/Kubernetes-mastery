@@ -28,3 +28,18 @@ minikube start --driver=docker
 ### Deploy
 ```bash
 kubectl apply -f deployment.yaml
+
+# Kubernetes Day 3 – Services
+
+## What I learned
+- Services give a stable IP/DNS name to a set of Pods selected by labels.
+- `ClusterIP` – internal only, reachable from other Pods.
+- `NodePort` – exposes a static port on every node, accessible from outside.
+- `LoadBalancer` – provisions an external load balancer (simulated with `minikube tunnel`).
+- How to test connectivity using `kubectl run --rm -it` and `minikube service`.
+
+## Commands
+
+### Apply the Deployment
+```bash
+kubectl apply -f deployment.yaml
