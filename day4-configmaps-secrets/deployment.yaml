@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+        - name: flask
+          image: my-flask-app:v2
+          ports: 
+            - containerPort: 8080
+          env: 
+            - name: welcome_message
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: welcome_message
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: API_KEY
