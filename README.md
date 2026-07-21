@@ -43,3 +43,25 @@ kubectl apply -f deployment.yaml
 ### Apply the Deployment
 ```bash
 kubectl apply -f deployment.yaml
+
+# Kubernetes Day 4 – ConfigMaps & Secrets
+
+## What I learned
+- How to store plain-text configuration in a ConfigMap.
+- How to store sensitive data (passwords) in a Secret.
+- Injecting ConfigMap and Secret values into Pods as environment variables using `configMapKeyRef` and `secretKeyRef`.
+- Updating a ConfigMap and restarting Pods to apply changes.
+- Building a Docker image directly into Minikube with `minikube image build`.
+
+## Files
+- `app.py` – Flask web app that reads `WELCOME_MESSAGE` and `API_KEY` from env.
+- `Dockerfile` – builds the Python image.
+- `configmap.yaml` – ConfigMap with `WELCOME_MESSAGE`.
+- `deployment.yaml` – Deployment that uses the ConfigMap and Secret.
+- `service.yaml` – NodePort service to access the app.
+
+## Commands
+
+### Build image in Minikube
+```bash
+minikube image build -t my-flask-app:v1 .
