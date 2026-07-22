@@ -65,3 +65,26 @@ kubectl apply -f deployment.yaml
 ### Build image in Minikube
 ```bash
 minikube image build -t my-flask-app:v1 .
+
+# Kubernetes Day 5 – Persistent Volumes
+
+## What I learned
+- Pod storage is temporary; it disappears when the Pod is deleted.
+- PersistentVolumes (PV) are storage resources in the cluster.
+- PersistentVolumeClaims (PVC) are requests for storage by Pods.
+- Binding: PVC binds to a matching PV.
+- Using `hostPath` to create a local PV for learning.
+- Mounting a PVC into a Pod’s filesystem.
+- Data survives Pod deletion because it’s stored on the PV.
+
+## Files
+- `pv.yaml` – PersistentVolume (hostPath, 1Gi).
+- `pvc.yaml` – PersistentVolumeClaim (1Gi, ReadWriteOnce).
+- `pod.yaml` – Pod (busybox) that uses the PVC.
+
+## Commands
+
+### Create PV and PVC
+```bash
+kubectl apply -f pv.yaml
+kubectl apply -f pvc.yaml
