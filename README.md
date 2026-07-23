@@ -88,3 +88,23 @@ minikube image build -t my-flask-app:v1 .
 ```bash
 kubectl apply -f pv.yaml
 kubectl apply -f pvc.yaml
+
+# Kubernetes Day 6 – Ingress
+
+## What I learned
+- Ingress lets you expose multiple Services through a single IP/port.
+- The Ingress Controller (nginx) handles routing based on URL paths.
+- Writing Ingress rules with `path` and `pathType`.
+- Using `rewrite-target` annotation to strip the path prefix before forwarding.
+- Testing Ingress using `kubectl port-forward` and `curl` with a custom `Host` header.
+
+## Files
+- `web-app.yaml` – Deployment + Service for the web app.
+- `api-app.yaml` – Deployment + Service for the API app.
+- `ingress.yaml` – Ingress resource with path rules.
+
+## Commands
+
+### Enable Ingress addon
+```bash
+minikube addons enable ingress
