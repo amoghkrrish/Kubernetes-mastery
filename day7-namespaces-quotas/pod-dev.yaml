@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  namespace: dev
+  labels:
+    app: web
+spec:
+  containers:
+    - name: nginx
+      image: nginx:alpine
+      command: ["/bin/sh", "-c", "echo 'Hello from DEV' > /usr/share/nginx/html/index.html && nginx -g 'daemon off;'"]
+      ports:
+        - containerPort: 80
+
