@@ -108,3 +108,26 @@ kubectl apply -f pvc.yaml
 ### Enable Ingress addon
 ```bash
 minikube addons enable ingress
+
+# Kubernetes Day 7 – Namespaces & Resource Quotas
+
+## What I learned
+- Namespaces provide logical isolation inside a cluster.
+- How to create a namespace and deploy resources into it.
+- Same resource name can exist in different namespaces.
+- ResourceQuota limits the total CPU, memory, and object count in a namespace.
+- What happens when a Pod tries to exceed the quota (stuck in Pending).
+
+## Files
+- `pod-dev.yaml` – Pod in the `dev` namespace.
+- `pod-qa.yaml` – Pod in the `qa` namespace.
+- `quota-dev.yaml` – ResourceQuota for `dev`.
+- `pod-small.yaml` – Pod that respects the quota.
+- `pod-huge.yaml` – Pod that violates the quota.
+
+## Commands
+
+### Create namespaces
+```bash
+kubectl create namespace dev
+kubectl create namespace qa
